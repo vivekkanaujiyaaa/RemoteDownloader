@@ -1,0 +1,31 @@
+<!--
+  Generated template for the DownloadListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Downloads</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-icon name="sync" (click)="syncDownloads($event)"></ion-icon>
+
+  <div text-center *ngIf="!isLoaded">
+    <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+
+  <ion-list>
+    <ion-item *ngFor="let download of downloads.downloads">
+      <h2>{{ download.name }}</h2>
+      <!--<p>{{ download.path }}</p>-->
+      <p> {{ download.percentage }}%</p>
+      <ion-icon *ngIf="download.percentage == 100" (click)="deleteDownloads($event, download.id)" name="remove-circle" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,8 @@
+{
+  "name": "myDownloder",
+  "app_id": "94160af5",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
