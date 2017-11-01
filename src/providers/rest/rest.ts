@@ -69,6 +69,13 @@ export class RestProvider {
               .catch(this.handleError)
   }
 
+  postMobileToken(payload): Observable<string[]> {
+    console.log(payload);
+    return this.http.post(this.apiUrl + "/mobile/token", payload)
+              .map(this.extractData)
+              .catch(this.handleError)
+  }
+
   private extractData(res: Response) {
     console.log("response");
     console.log(res);
