@@ -61,3 +61,4 @@ Features
  - View the download list
  - Refresh the download list
  - Remove a completed download
+ - Receive push notification when download is finish
