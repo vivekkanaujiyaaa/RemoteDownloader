@@ -1,3 +1,14 @@
+French part for school
+===================
+
+Dans le cadre d’un projet scolaire il nous a été demandé de reéaliser une application mobile hybride utilisant le framwork Cordova Ionic3 & Angular 4
+
+L’application permet d’envoyer un lien de telechargement direct sur une API que nous avons développer l’application nous permet de voir la liste des telechargement, envoyer un lien de telechargement et de choisir le repertoire, configurer l’accès à l’API et supprimer un telechargement fini.
+
+Le projet a été réaliser par Luc Perusse & Florian Touch
+
+----------
+
 RemoteDownloader!
 ===================
 
