@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from "../../providers/rest/rest";
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AlertController } from 'ionic-angular';
+import { Clipboard } from '@ionic-native/clipboard';
 
 /**
  * Generated class for the AddDownloadPage page.
@@ -26,13 +27,15 @@ export class AddDownloadPage {
   subDirectory = 0;
   serverInfos = {};
   isLoaded = false;
+  inputValue = "";
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public rest: RestProvider,
     public formBuilder: FormBuilder,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    private clipboard: Clipboard) {
 
     this.addDownloadForm = this.formBuilder.group({
       linkToDownload: ['', Validators.required],
@@ -108,5 +111,20 @@ export class AddDownloadPage {
     alert.present();
   }
 
+  pastLink() {
+    this.clipboard.paste().then(
+      (resolve: string) => {
+        this.inputValue = resolve;
+        this.addDownloadForm.value.linkToDownload = resolve;
+      },
+      (reject: string) => {
+        alert('Error: ' + reject);
+      }
+    );
+  }
+
+  resetInputValue() {
+    this.inputValue = "";
+  }
 
 }

@@ -32,7 +32,9 @@
     </ion-scroll>
 
     <form [formGroup]="addDownloadForm" (ngSubmit)="addDownloadFormSubmit()">
-      <ion-input type="text" formControlName="linkToDownload" placeholder="Your link"></ion-input>
+      <ion-input type="text" formControlName="linkToDownload" placeholder="Your link" [(ngModel)]="inputValue"></ion-input><br>
+      <ion-icon name="clipboard" (click)="pastLink($event)"></ion-icon><br><br>
+      <ion-icon name="close" (click)="resetInputValue($event)"></ion-icon><br><br>
       <button ion-button type="submit" [disabled]="!addDownloadForm.valid">Download</button>
     </form>
   </div>

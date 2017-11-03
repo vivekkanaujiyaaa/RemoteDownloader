@@ -35,6 +35,9 @@
         },
         "cordova-plugin-fcm": {
             "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-clipboard": {
+            "PACKAGE_NAME": "com.remotedownloader.mobile"
         }
     },
     "dependent_plugins": {

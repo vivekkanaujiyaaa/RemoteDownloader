@@ -20,6 +20,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { Clipboard } from '@ionic-native/clipboard';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestProvider
+    RestProvider,
+    Clipboard
   ]
 })
 export class AppModule {}
