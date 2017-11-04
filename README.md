@@ -1,11 +1,13 @@
 French part for school
 ===================
 
-Dans le cadre d’un projet scolaire il nous a été demandé de reéaliser une application mobile hybride utilisant le framwork Cordova Ionic3 & Angular 4
+Dans le cadre d’un projet scolaire il nous a été demandé de réaliser une application mobile hybride utilisant le framwork Cordova Ionic3 & Angular 4
 
-L’application permet d’envoyer un lien de telechargement direct sur une API que nous avons développer l’application nous permet de voir la liste des telechargement, envoyer un lien de telechargement et de choisir le repertoire, configurer l’accès à l’API et supprimer un telechargement fini.
+L’application permet d’envoyer un lien de téléchargement direct sur une API que nous avons développé l’application nous permet de voir la liste des téléchargements, envoyer un lien de téléchargement et de choisir le repertoire, configurer l’accès à l’API et supprimer un téléchargement fini.
 
-Le projet a été réaliser par Luc Perusse & Florian Touch
+Participation aux cours: Oui.
+
+Le projet a été réalisé par Luc Perusse & Florian Touch
 
 ----------
 
