@@ -14,10 +14,15 @@ RemoteDownloader!
 
 
 Hi, RemoteDownloader is a Mobile Hybride school project.
-This app can't be run by him self you need [PyDownloadREST](https://github.com/Luckystrike561/PyDownloadREST)
+This app can't be run by itself, so you will need [PyDownloadREST](https://github.com/Luckystrike561/PyDownloadREST)
 
 ![enter image description here](https://media.giphy.com/media/3ov9jNypI723f8CY3C/giphy.gif)
 ----------
+
+Demo
+-------------
+
+link to the video
 
 Install
 -------------
@@ -29,8 +34,12 @@ Install
 Build
 -----
 
+Two possibilities:
+
     ionic cordova build
-then chose between **android** and **ios**
+> then chose between **android** and **ios**
+
+
 or
 
     ionic cordova build android
@@ -56,9 +65,9 @@ Run!
 Features
 --------
 
- - Add a direct link and chose the directory path
+ - Add a direct link and choose the directory path
  - Configure the URL API in settings
- - View the download list
- - Refresh the download list
+ - View the downloads list
+ - Refresh the downloads list
  - Remove a completed download
- - Receive push notification when download is finish
+ - Receive push notifications when a download is completed
