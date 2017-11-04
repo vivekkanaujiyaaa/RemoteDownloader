@@ -7,7 +7,7 @@ L’application permet d’envoyer un lien de téléchargement direct sur une AP
 
 Participation aux cours: Oui.
 
-Le projet a été réalisé par Luc Perusse & Florian Touch
+Le projet a été réalisé par Luc Perusse & Florian Tousch
 
 ----------
 
