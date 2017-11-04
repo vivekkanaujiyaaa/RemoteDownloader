@@ -99,7 +99,14 @@ export class AddDownloadPage {
   }
 
   goTo(event, directory) {
-    this.getDirectories(this.directories["rootPathDirectory"] + "/" + directory);
+    if (directory.length == 1) {
+      this.currentDirectory = this.directories["rootPathDirectory"] + directory
+      this.getDirectories(this.currentDirectory);
+    }
+    else {
+      this.currentDirectory = this.directories["rootPathDirectory"] + "/" + directory
+      this.getDirectories(this.currentDirectory);
+    }
   }
 
   presentAlert() {

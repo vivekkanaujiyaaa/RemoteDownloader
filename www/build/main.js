@@ -210,7 +210,7 @@ var TabsPage = (function () {
     return TabsPage;
 }());
 TabsPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Download List" tabIcon="list-box"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Add Download" tabIcon="add-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Settings" tabIcon="settings"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/pages/tabs/tabs.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/peruss_l/projects/RemoteDownloader/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Download List" tabIcon="list-box"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Add Download" tabIcon="add-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Settings" tabIcon="settings"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/home/peruss_l/projects/RemoteDownloader/src/pages/tabs/tabs.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_rest_rest__["a" /* RestProvider */]])
 ], TabsPage);
@@ -372,7 +372,7 @@ var MyApp = (function () {
     return MyApp;
 }());
 MyApp = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/app/app.html"*/
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({template:/*ion-inline-start:"/home/peruss_l/projects/RemoteDownloader/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/peruss_l/projects/RemoteDownloader/src/app/app.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
@@ -415,7 +415,7 @@ __decorate([
 ], ProgressBarComponent.prototype, "progress", void 0);
 ProgressBarComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'progress-bar',template:/*ion-inline-start:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/components/progress-bar/progress-bar.html"*/'<!-- Generated template for the ProgressBarComponent component -->\n<div class="progress-outer">\n    <div class="progress-inner" [style.width]="progress + \'%\'">\n        {{progress}}%\n    </div>\n</div>\n'/*ion-inline-end:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/components/progress-bar/progress-bar.html"*/
+        selector: 'progress-bar',template:/*ion-inline-start:"/home/peruss_l/projects/RemoteDownloader/src/components/progress-bar/progress-bar.html"*/'<!-- Generated template for the ProgressBarComponent component -->\n<div class="progress-outer">\n    <div class="progress-inner" [style.width]="progress + \'%\'">\n        {{progress}}%\n    </div>\n</div>\n'/*ion-inline-end:"/home/peruss_l/projects/RemoteDownloader/src/components/progress-bar/progress-bar.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], ProgressBarComponent);
@@ -622,6 +622,7 @@ var AddDownloadPage = (function () {
             "link": this.addDownloadForm.value.linkToDownload,
             "directory": this.currentDirectory
         };
+        alert(this.currentDirectory);
         this.sendLinkToDownload(data);
         console.log(this.addDownloadForm.value.linkToDownload);
         this.presentAlert();
@@ -630,7 +631,14 @@ var AddDownloadPage = (function () {
         this.getDirectories(this.directories["parentDirectory"]);
     };
     AddDownloadPage.prototype.goTo = function (event, directory) {
-        this.getDirectories(this.directories["rootPathDirectory"] + "/" + directory);
+        if (directory.length == 1) {
+            this.currentDirectory = this.directories["rootPathDirectory"] + directory;
+            this.getDirectories(this.currentDirectory);
+        }
+        else {
+            this.currentDirectory = this.directories["rootPathDirectory"] + "/" + directory;
+            this.getDirectories(this.currentDirectory);
+        }
     };
     AddDownloadPage.prototype.presentAlert = function () {
         var alert = this.alertCtrl.create({
@@ -656,7 +664,7 @@ var AddDownloadPage = (function () {
 }());
 AddDownloadPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-add-download',template:/*ion-inline-start:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/pages/add-download/add-download.html"*/'<!--\n  Generated template for the AddDownloadPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Remote Download</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div id="displayDownloadList">\n\n      <ion-label color="primary">Select your path: {{ directories.rootPathDirectory }}</ion-label>\n      <ion-scroll scrollY="true" style="height:40vh;">\n\n      <div text-center *ngIf="!isLoaded">\n        <ion-spinner name="bubbles"></ion-spinner>\n      </div>\n\n      <div *ngIf="isLoaded">\n        <h2 (click)="goBack($event)">..</h2>\n        <ion-item *ngFor="let directory of directories.directories">\n          <h2 (click)="goTo($event, directory)">{{ directory }}</h2>\n        </ion-item>\n      </div>\n    </ion-scroll>\n\n    <form [formGroup]="addDownloadForm" (ngSubmit)="addDownloadFormSubmit()">\n      <ion-input type="text" formControlName="linkToDownload" placeholder="Your link" [(ngModel)]="inputValue"></ion-input><br>\n      <ion-icon name="clipboard" (click)="pastLink($event)"></ion-icon><br><br>\n      <ion-icon name="close" (click)="resetInputValue($event)"></ion-icon><br><br>\n      <button ion-button type="submit" [disabled]="!addDownloadForm.valid">Download</button>\n    </form>\n  </div>\n\n  <div id="displayError" *ngIf="!serverInfos.alive">\n    <h3>No connection established between server and app</h3>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/pages/add-download/add-download.html"*/,
+        selector: 'page-add-download',template:/*ion-inline-start:"/home/peruss_l/projects/RemoteDownloader/src/pages/add-download/add-download.html"*/'<!--\n  Generated template for the AddDownloadPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Remote Download</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <div id="displayDownloadList">\n\n      <ion-label color="primary">Select your path: {{ directories.rootPathDirectory }}</ion-label>\n      <ion-scroll scrollY="true" style="height:40vh;">\n\n      <div text-center *ngIf="!isLoaded">\n        <ion-spinner name="bubbles"></ion-spinner>\n      </div>\n\n      <div *ngIf="isLoaded">\n        <h2 (click)="goBack($event)">..</h2>\n        <ion-item *ngFor="let directory of directories.directories">\n          <h2 (click)="goTo($event, directory)">{{ directory }}</h2>\n        </ion-item>\n      </div>\n    </ion-scroll>\n\n    <form [formGroup]="addDownloadForm" (ngSubmit)="addDownloadFormSubmit()">\n      <ion-input type="text" formControlName="linkToDownload" placeholder="Your link" [(ngModel)]="inputValue"></ion-input><br>\n      <ion-icon name="clipboard" (click)="pastLink($event)"></ion-icon><br><br>\n      <ion-icon name="close" (click)="resetInputValue($event)"></ion-icon><br><br>\n      <button ion-button type="submit" [disabled]="!addDownloadForm.valid">Download</button>\n    </form>\n  </div>\n\n  <div id="displayError" *ngIf="!serverInfos.alive">\n    <h3>No connection established between server and app</h3>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/peruss_l/projects/RemoteDownloader/src/pages/add-download/add-download.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -739,7 +747,7 @@ var DownloadListPage = (function () {
 }());
 DownloadListPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-download-list',template:/*ion-inline-start:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/pages/download-list/download-list.html"*/'<!--\n  Generated template for the DownloadListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Downloads</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-icon name="sync" (click)="syncDownloads($event)"></ion-icon>\n\n  <div text-center *ngIf="!isLoaded">\n    <ion-spinner name="bubbles"></ion-spinner>\n  </div>\n\n  <ion-list>\n    <ion-item *ngFor="let download of downloads.downloads">\n      <h2>{{ download.name }}</h2>\n      <!--<p>{{ download.path }}</p>-->\n      <p> {{ download.percentage }}%</p>\n      <ion-icon *ngIf="download.percentage == 100" (click)="deleteDownloads($event, download.id)" name="remove-circle" item-end></ion-icon>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/pages/download-list/download-list.html"*/,
+        selector: 'page-download-list',template:/*ion-inline-start:"/home/peruss_l/projects/RemoteDownloader/src/pages/download-list/download-list.html"*/'<!--\n  Generated template for the DownloadListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Downloads</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-icon name="sync" (click)="syncDownloads($event)"></ion-icon>\n\n  <div text-center *ngIf="!isLoaded">\n    <ion-spinner name="bubbles"></ion-spinner>\n  </div>\n\n  <ion-list>\n    <ion-item *ngFor="let download of downloads.downloads">\n      <h2>{{ download.name }}</h2>\n      <!--<p>{{ download.path }}</p>-->\n      <p> {{ download.percentage }}%</p>\n      <ion-icon *ngIf="download.percentage == 100" (click)="deleteDownloads($event, download.id)" name="remove-circle" item-end></ion-icon>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/peruss_l/projects/RemoteDownloader/src/pages/download-list/download-list.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -816,7 +824,7 @@ var SettingsPage = (function () {
 }());
 SettingsPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-settings',template:/*ion-inline-start:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/pages/settings/settings.html"*/'<!--\n  Generated template for the SettingsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>settings</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <form [formGroup]="settingsForm" (ngSubmit)="settingsFormSubmit()">\n    <ion-input\n      type="text"\n      formControlName="apiUrl"\n      placeholder="Api url"\n      value="{{apiUrl}}">\n    </ion-input>\n    <button ion-button type="submit" [disabled]="!settingsForm.valid">Save</button>\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/home/peruss_l/Projects/epitech/RemoteDownloader/src/pages/settings/settings.html"*/,
+        selector: 'page-settings',template:/*ion-inline-start:"/home/peruss_l/projects/RemoteDownloader/src/pages/settings/settings.html"*/'<!--\n  Generated template for the SettingsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>settings</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <form [formGroup]="settingsForm" (ngSubmit)="settingsFormSubmit()">\n    <ion-input\n      type="text"\n      formControlName="apiUrl"\n      placeholder="Api url"\n      value="{{apiUrl}}">\n    </ion-input>\n    <button ion-button type="submit" [disabled]="!settingsForm.valid">Save</button>\n  </form>\n\n</ion-content>\n'/*ion-inline-end:"/home/peruss_l/projects/RemoteDownloader/src/pages/settings/settings.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
