@@ -22,7 +22,7 @@ This app can't be run by itself, so you will need [PyDownloadREST](https://githu
 Demo
 -------------
 
-link to the video
+https://youtu.be/hOHifuz71lE
 
 Install
 -------------
